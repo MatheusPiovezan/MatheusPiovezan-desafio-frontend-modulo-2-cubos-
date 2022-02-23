@@ -61,8 +61,7 @@ btnNext.addEventListener('click', () => {
         startIndex = 0;
         endIndex = 5;
     }
-    console.log(startIndex)
-    console.log(endIndex)
+
     let newMovie = films.slice(startIndex, endIndex);
     let changeMovies = document.querySelectorAll('.movie');
     let movieTitle = document.querySelectorAll('.movie__title');
@@ -74,16 +73,17 @@ btnNext.addEventListener('click', () => {
         movieRating[index].textContent = newMovie[index].vote_average;
 
         modal(movie, newMovie[index].id)
-    })
+    });
 });
 btnPrev.addEventListener('click', () => {
     startIndex -= 5;
     endIndex -= 5;
 
     if (endIndex < 4) {
-        startIndex = 15;
-        endIndex = 20;
+        startIndex = films.length - 5;
+        endIndex = films.length;
     }
+
     let newMovie = films.slice(startIndex, endIndex);
     let changeMovies = document.querySelectorAll('.movie');
     let movieTitle = document.querySelectorAll('.movie__title');
@@ -93,7 +93,6 @@ btnPrev.addEventListener('click', () => {
         movie.style.backgroundImage = `url(${newMovie[index].poster_path})`;
         movieTitle[index].textContent = newMovie[index].title;
         movieRating[index].textContent = newMovie[index].vote_average;
-        console.log(newMovie)
         modal(movie, newMovie[index].id)
     });
 });
